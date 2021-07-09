@@ -9,7 +9,7 @@ class User {
         con.connect();
 
         const res = await con.query(
-            'SELECT id, usuario, nombres, apellidos, correo, edad FROM usuarios WHERE usuario = $1 AND contrasenia = $2', [username, sha256(password)]
+            'SELECT id, usuario, nombres, apellidos, correo, edad, rol FROM usuarios WHERE usuario = $1 AND contrasenia = $2', [username, sha256(password)]
         );
         try {
             if (res.rows.length > 0) {

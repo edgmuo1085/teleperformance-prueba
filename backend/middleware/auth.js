@@ -14,7 +14,7 @@ class TokenJWT {
     async generateToken(user) {
 
         const keyPrivate = await readFile(path.join(__dirname, "../config/keyPriv.rsa"));
-        const token = await jwt.sign({ user }, keyPrivate.toString(), { algorithm: 'RS256' });
+        const token = await jwt.sign({ user, exp: Math.floor(Date.now() / 1000) + (60 * 60), }, keyPrivate.toString(), { algorithm: 'RS256' });
         return await token.toString();
     }
 
