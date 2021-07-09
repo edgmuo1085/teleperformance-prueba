@@ -1,1 +1,51 @@
-<p>login works!</p>
+<div class="row">
+    <div class="col-lg-5 col-md-6 col-sm-8 ml-auto mr-auto">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title text-center">Iniciar Sesión</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 px-1">
+                            <div class="form-group mb-0">
+                                <label>Usuario</label>
+                                <input type="text" class="form-control" placeholder="Usuario"
+                                    formControlName="username">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 px-1 text-center pb-4">
+                            <small class="text-danger"
+                                *ngIf="controls.username.errors && (controls.username.dirty || controls.username.touched)">El
+                                nombre de usuario no es <strong>válido</strong></small>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 px-1">
+                            <div class="form-group mb-0">
+                                <label>Contraseña</label>
+                                <input type="password" class="form-control" placeholder="*****"
+                                    formControlName="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 px-1 text-center pb-4">
+                            <small class="text-danger" *ngIf="controls.password.errors && (controls.password.dirty || controls.password.touched)">El
+                                campo contraseña es <strong>requerido</strong> </small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-info btn-round btn-lg" [disabled]="loginForm.invalid">Entrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

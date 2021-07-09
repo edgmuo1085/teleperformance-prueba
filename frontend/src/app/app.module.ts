@@ -26,7 +26,7 @@ import { JwtInterceptorInterceptor } from './shared/auth/jwt-interceptor.interce
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
-		SharedModule
+		SharedModule,
 	],
 	providers: [
 		{

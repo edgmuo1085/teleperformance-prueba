@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ContentPagesRoutingModule } from './content-pages-routing.module';
 import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -11,7 +13,10 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     CommonModule,
-    ContentPagesRoutingModule
+    ContentPagesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule
   ]
 })
 export class ContentPagesModule { }

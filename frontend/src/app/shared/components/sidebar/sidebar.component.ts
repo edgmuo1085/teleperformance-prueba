@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 export interface RouteInfo {
 	path: string;
@@ -9,7 +10,7 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
 	{ path: 'full/dashboard', title: 'Dashboard', icon: 'nc-bank', class: '' },
-	{ path: 'full/perfil', title: 'Icons', icon: 'nc-diamond', class: '' }
+	{ path: 'full/perfil', title: 'Perfil', icon: 'nc-diamond', class: '' }
 ];
 
 @Component({
@@ -21,6 +22,10 @@ export class SidebarComponent implements OnInit {
 
 	@Output() titulo_menu = new EventEmitter
 	menuItems: Array<any> = [];
+
+	constructor(
+		public loginService: LoginService
+	) { }
 
 	ngOnInit() {
 		this.menuItems = ROUTES.filter(menuItem => menuItem);

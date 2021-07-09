@@ -1,0 +1,42 @@
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+
+	constructor(private router: Router) { }
+	canActivate(
+		route: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+		if (this.checkToken()) {
+			return true;
+		} else {
+			localStorage.clear();
+			Swal.fire(
+				'Error',
+				`Su Token ha caducado...`,
+				'error'
+			);
+			this.router.navigate(['pages/login']);
+			return false;
+		}
+	}
+
+	private checkToken = (): boolean => {
+		if (localStorage.getItem('access_tk')) {
+			/* let fecha_actual = new Date();
+			if (fecha_actual > this.userInfoService.exp) {
+				return false
+			} else {
+				return true
+			} */
+			return true
+		}
+		return false
+	}
+}
