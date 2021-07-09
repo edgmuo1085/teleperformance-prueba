@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { UserLogin } from 'src/app/interfaces/';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
+import { TokenInfo, TokenInfoModel } from '../interfaces/';
 
 @Injectable({
 	providedIn: 'root'
@@ -20,15 +21,13 @@ export class LoginService {
 
 	login = (user: UserLogin): Observable<any> => {
 		return this.http.post<any>(this.urlApi, user)
-		.pipe(map(data => {
-			this.setToken(data.data);
-			this.router.navigate(['full/dashboard']);
-			const payload: any = jwtdecode(data.data);
-			console.log(payload);
-			
-			return 'Data';
-		}));
-		
+			.pipe(map(data => {
+				this.setToken(data.data);
+				this.router.navigate(['full/dashboard']);
+				const payload: TokenInfo = jwtdecode(data.data);
+				return TokenInfoModel.llenarData(payload);
+			}));
+
 	}
 
 	setToken = (token: string) => {
