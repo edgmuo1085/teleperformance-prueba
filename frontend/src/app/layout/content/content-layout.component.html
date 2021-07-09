@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-primary navbar-transparent navbar-absolute" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-wrapper">
+            <a class="navbar-brand d-none d-sm-none d-md-block" [routerLink]="['/full/dashboard']"> Titulo</a>
+            <a class="navbar-brand d-block d-sm-block d-md-none" [routerLink]="['/full/dashboard']">tit</a>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper wrapper-full-page">
+    <div class="page-header login-page header-filter" filter-color="black" >
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div>
+
+<!-- <nav class="navbar navbar-expand-lg bg-primary navbar-transparent navbar-absolute" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-wrapper">
+            <a class="navbar-brand d-none d-sm-none d-md-block" [routerLink]="['/full/dashboard']"><img
+                    src="{{urlImg}}logo-olgaviria-large.png" width="120"></a>
+            <a class="navbar-brand d-block d-sm-block d-md-none" [routerLink]="['/full/dashboard']"><img
+                    src="{{urlImg}}favicon.png" width="40"></a>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper wrapper-full-page">
+    <div class="page-header login-page header-filter" filter-color="black"
+        style="background-image: url('./assets/img/login-bg.png'); background-size: cover; background-position: top center;">
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div> -->
