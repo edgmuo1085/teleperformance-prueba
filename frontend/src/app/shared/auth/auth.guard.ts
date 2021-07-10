@@ -31,16 +31,9 @@ export class AuthGuard implements CanActivate {
 	private checkToken = (): boolean => {
 		if (localStorage.getItem('access_tk')) {
 			let fecha_actual = new Date();
-			/* 
-			console.log(fecha_actual);
-			console.log(this.tokenInfoService.exp);
-			 */
 			if (fecha_actual > this.tokenInfoService.exp) {
-				console.log(false);
-				
 				return false
 			} else {
-				console.log(true);
 				return true
 			}
 		}

@@ -8,6 +8,7 @@ import { UserLogin } from 'src/app/interfaces/';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { TokenInfo, TokenInfoModel } from '../interfaces/';
+import { TokenInfoService } from './token-info.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -15,7 +16,13 @@ import { TokenInfo, TokenInfoModel } from '../interfaces/';
 export class LoginService {
 
 	urlApi!: string;
-	constructor(private router: Router, private http: HttpClient) {
+	isLogin: boolean = false;
+	roleAs!: string;
+
+	constructor(
+		private router: Router,
+		private http: HttpClient
+	) {
 		this.urlApi = environment.apiRest + 'sesion';
 	}
 
@@ -25,6 +32,8 @@ export class LoginService {
 				this.setToken(data.data);
 				this.router.navigate(['full/dashboard']);
 				const payload: TokenInfo = jwtdecode(data.data);
+				console.log(payload);
+				
 				return TokenInfoModel.llenarData(payload);
 			}));
 
@@ -58,4 +67,5 @@ export class LoginService {
 			}
 		});
 	}
+
 }

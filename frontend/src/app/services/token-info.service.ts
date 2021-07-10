@@ -18,8 +18,12 @@ export class TokenInfoService {
 		this.tokenInfo = data;
 	}
 
+	get role() {
+		return this.tokenInfo.user.rol;
+	}
+	
 	get user() {
-		return this.tokenInfo;
+		return this.tokenInfo.user;
 	}
 
 	get exp() {
